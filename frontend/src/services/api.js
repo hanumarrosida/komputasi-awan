@@ -1,5 +1,5 @@
 import axios from "axios";
-const api = axios.create({
-baseURL: "http://localhost:3000"
+
+export default axios.create({
+  baseURL: "komputasi-awan-production-f4c0.up.railway.app",
 });
-export default api;
