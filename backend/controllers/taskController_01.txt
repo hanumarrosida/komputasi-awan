@@ -1,0 +1,33 @@
+exports.getAllTasks = (req, res) => {
+res.json([
+{
+id: 1,
+title: "Belajar Cloud Computing",
+description: "Express + Prisma + Neon",
+status: false
+}
+]);
+};
+exports.getTaskById = (req, res) => {
+res.json({
+id: req.params.id,
+title: "Task",
+description: "Contoh",status: false
+});
+};
+exports.createTask = (req, res) => {
+res.json({
+message: "Task berhasil dibuat",
+data: req.body
+});
+};
+exports.updateTask = (req, res) => {
+res.json({
+message: `Task ${req.params.id} berhasil diupdate`
+});
+};
+exports.deleteTask = (req, res) => {
+res.json({
+message: `Task ${req.params.id} berhasil dihapus`
+});
+};

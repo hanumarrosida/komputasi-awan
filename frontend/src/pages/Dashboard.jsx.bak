@@ -1,0 +1,23 @@
+import DashboardCard from '../components/DashboardCard';
+import ServerForm from '../components/ServerForm';
+import ServerTable from '../components/ServerTable';
+
+function Dashboard() {
+  return (
+    <>
+      <h2 className="mb-4">Dashboard</h2>
+
+      <div className="row g-3 mb-4">
+        <DashboardCard title="Total Server" value="12" color="primary" />
+        <DashboardCard title="Running" value="8" color="success" />
+        <DashboardCard title="Stopped" value="3" color="danger" />
+        <DashboardCard title="Maintenance" value="1" color="warning" />
+      </div>
+
+      <ServerForm />
+      <ServerTable />
+    </>
+  );
+}
+
+export default Dashboard;

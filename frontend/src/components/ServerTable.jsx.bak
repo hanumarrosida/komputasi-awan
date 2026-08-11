@@ -1,0 +1,57 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
+
+function ServerTable() {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  const loadTasks = async () => {
+    try {
+      const response = await api.get("/tasks");
+      setTasks(response.data);
+    } catch (error) {
+      console.error("Gagal mengambil data:", error);
+    }
+  };
+
+  return (
+    <div className="card shadow mt-4">
+      <div className="card-header bg-light">
+        <h5 className="mb-0 fw-bold">Task List</h5>
+      </div>
+      <div className="card-body">
+        <table className="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th style={{ width: "10%" }}>ID</th>
+              <th style={{ width: "35%" }}>Title</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.length > 0 ? (
+              tasks.map((task) => (
+                <tr key={task.id}>
+                  <td>{task.id}</td>
+                  <td className="fw-semibold">{task.title}</td>
+                  <td>{task.description}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="3" className="text-center text-muted py-3">
+                  Tidak ada data task.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default ServerTable;
